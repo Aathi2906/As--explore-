@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AS EXPLORE | Cloud Kitchen</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #fff8f0;
+    color: #222;
+}
+
+/* HEADER */
+
+header {
+    background: #111;
+    color: white;
+    text-align: center;
+    padding: 22px;
+}
+
+header h1 {
+    font-size: 30px;
+}
+
+header p {
+    margin-top: 6px;
+    color: #ddd;
+}
+
+/* NAVIGATION */
+
+nav {
+    background: #222;
+    padding: 13px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 8px;
+    font-size: 14px;
+}
+
+/* HERO */
+
+.hero {
+    text-align: center;
+    padding: 65px 20px;
+    background: #ffe0b2;
+}
+
+.hero h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    margin-bottom: 25px;
+}
+
+.btn {
+    display: inline-block;
+    background: #e65100;
+    color: white;
+    padding: 13px 25px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* MENU */
+
+.menu {
+    padding: 35px 15px;
+}
+
+.menu h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* SEARCH */
+
+#searchBox {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 18px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+/* CATEGORIES */
+
+.categories {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    margin-bottom: 20px;
+}
+
+.categories button {
+    border: none;
+    padding: 10px 16px;
+    border-radius: 20px;
+    background: #eee;
+    white-space: nowrap;
+    font-weight: bold;
+}
+
+.categories button:active {
+    transform: scale(0.95);
+}
+
+/* FOOD CARD */
+
+.food {
+    background: white;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    box-shadow: 0 3px 10px #ddd;
+    overflow: hidden;
+}
+
+.food img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 12px;
+}
+
+.food h3 {
+    margin-bottom: 8px;
+}
+
+.price {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.order-btn {
+    background: #25d366;
+    color: white;
+    border: none;
+    padding: 11px 18px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* CART */
+
+.cart {
+    padding: 35px 15px;
+    background: white;
+}
+
+.cart h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.cart-item {
+    background: #f5f5f5;
+    padding: 14px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.cart-item-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.quantity {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.quantity button {
+    border: none;
+    background: #e65100;
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+.remove-btn {
+    border: none !important;
+    background: #d32f2f !important;
+    color: white;
+    padding: 6px 10px;
+    width: auto !important;
+    height: auto !important;
+    font-size: 13px !important;
+}
+
+.total {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 22px;
+}
+
+/* CHECKOUT */
+
+.checkout {
+    padding: 35px 15px;
+    background: #fff3e0;
+}
+
+.checkout h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.checkout input,
+.checkout textarea {
+    width: 100%;
+    padding: 13px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+.checkout textarea {
+    height: 100px;
+    resize: none;
+}
+
+.checkout-btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    background: #25d366;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+/* FOOTER */
+
+footer {
+    background: #111;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+footer p {
+    margin-top: 8px;
+    color: #ddd;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<header>
+
+<h1>AS EXPLORE 🍽️</h1>
+
+<p>Cloud Kitchen</p>
+
+</header>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+<a href="#home">Home</a>
+
+<a href="#menu">Menu</a>
+
+<a href="#cart">Cart 🛒</a>
+
+<a href="#contact">Contact</a>
+
+</nav>
+
+
+<!-- HOME -->
+
+<section class="hero" id="home">
+
+<h2>Explore the Taste 😋</h2>
+
+<p>
+Delicious food delivered to your doorstep.
+</p>
+
+<a href="#menu" class="btn">
+Order Now
+</a>
+
+</section>
+
+
+<!-- MENU -->
+
+<section class="menu" id="menu">
+
+<h2>Our Menu 🍴</h2>
+
+
+<!-- SEARCH -->
+
+<input
+type="text"
+id="searchBox"
+placeholder="🔍 Search food..."
+onkeyup="searchFood()">
+
+
+<!-- CATEGORIES -->
+
+<div class="categories">
+
+<button onclick="filterFood('all')">
+All
+</button>
+
+<button onclick="filterFood('biriyani')">
+Biriyani
+</button>
+
+<button onclick="filterFood('rice')">
+Rice
+</button>
+
+<button onclick="filterFood('fastfood')">
+Fast Food
+</button>
+
+</div>
+
+
+<!-- CHICKEN BIRIYANI -->
+
+<div class="food" data-category="biriyani">
+
+<img
+src="https://images.unsplash.com/photo-1631515242808-497c3fbd3972"
+alt="Chicken Biriyani">
+
+<h3>
+Chicken Biriyani 🍗
+</h3>
+
+<p>
+Delicious and spicy chicken biriyani.
+</p>
+
+<p class="price">
+₹150
+</p>
+
+<button
+class="order-btn"
+onclick="addToCart('Chicken Biriyani',150)">
+
+Add to Cart 🛒
+
+</button>
+
+</div>
+
+
+<!-- CHICKEN 65 -->
+
+<div class="food" data-category="fastfood">
+
+<img
+src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0"
+alt="Chicken 65">
+
+<h3>
+Chicken 65 🍗
+</h3>
+
+<p>
+Crispy and spicy chicken.
+</p>
+
+<p class="price">
+₹120
+</p>
+
+<button
+class="order-btn"
+onclick="addToCart('Chicken 65',120)">
+
+Add to Cart 🛒
+
+</button>
+
+</div>
+
+
+<!-- FRIED RICE -->
+
+<div class="food" data-category="rice">
+
+<img
+src="https://images.unsplash.com/photo-1603133872878-684f208fb84b"
+alt="Fried Rice">
+
+<h3>
+Fried Rice 🍚
+</h3>
+
+<p>
+Fresh and tasty fried rice.
+</p>
+
+<p class="price">
+₹100
+</p>
+
+<button
+class="order-btn"
+onclick="addToCart('Fried Rice',100)">
+
+Add to Cart 🛒
+
+</button>
+
+</div>
+
+
+<!-- BURGER -->
+
+<div class="food" data-category="fastfood">
+
+<img
+src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd"
+alt="Burger">
+
+<h3>
+Burger 🍔
+</h3>
+
+<p>
+Juicy and delicious burger.
+</p>
+
+<p class="price">
+₹90
+</p>
+
+<button
+class="order-btn"
+onclick="addToCart('Burger',90)">
+
+Add to Cart 🛒
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- CART -->
+
+<section class="cart" id="cart">
+
+<h2>
+🛒 Your Cart
+</h2>
+
+<div id="cartItems">
+
+<p style="text-align:center;">
+Your cart is empty.
+</p>
+
+</div>
+
+<div class="total">
+
+<strong id="total">
+Total: ₹0
+</strong>
+
+</div>
+
+</section>
+
+
+<!-- CHECKOUT -->
+
+<section class="checkout">
+
+<h2>
+📦 Delivery Details
+</h2>
+
+<input
+type="text"
+id="customerName"
+placeholder="Your Name">
+
+<input
+type="tel"
+id="customerPhone"
+placeholder="Mobile Number">
+
+<textarea
+id="customerAddress"
+placeholder="Delivery Address">
+</textarea>
+
+<button
+class="checkout-btn"
+onclick="placeOrder()">
+
+Place Order on WhatsApp 📲
+
+</button>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer id="contact">
+
+<h3>
+AS EXPLORE 🍽️
+</h3>
+
+<p>
+Cloud Kitchen – Chennai
+</p>
+
+<p>
+Delicious food delivered to your doorstep.
+</p>
+
+</footer>
+
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+
+/* CART ARRAY */
+
+let cart = [];
+
+
+/* ADD TO CART */
+
+function addToCart(name, price) {
+
+let existingItem =
+cart.find(item => item.name === name);
+
+
+if (existingItem) {
+
+existingItem.quantity++;
+
+} else {
+
+cart.push({
+
+name: name,
+
+price: price,
+
+quantity: 1
+
+});
+
+}
+
+
+displayCart();
+
+alert(name + " added to cart 🛒");
+
+}
+
+
+/* DISPLAY CART */
+
+function displayCart() {
+
+let cartItems =
+document.getElementById("cartItems");
+
+let totalElement =
+document.getElementById("total");
+
+
+cartItems.innerHTML = "";
+
+let total = 0;
+
+
+if (cart.length === 0) {
+
+cartItems.innerHTML =
+'<p style="text-align:center;">Your cart is empty.</p>';
+
+}
+
+
+cart.forEach(function(item,index) {
+
+
+let itemTotal =
+item.price * item.quantity;
+
+
+total += itemTotal;
+
+
+cartItems.innerHTML += `
+
+<div class="cart-item">
+
+<div class="cart-item-top">
+
+<strong>
+${item.name}
+</strong>
+
+<span>
+₹${itemTotal}
+</span>
+
+</div>
+
+
+<div class="quantity">
+
+<button
+onclick="decreaseQuantity(${index})">
+−
+</button>
+
+
+<span>
+${item.quantity}
+</span>
+
+
+<button
+onclick="increaseQuantity(${index})">
++
+</button>
+
+
+<button
+class="remove-btn"
+onclick="removeItem(${index})">
+
+Remove
+
+</button>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+
+totalElement.innerText =
+"Total: ₹" + total;
+
+}
+
+
+/* INCREASE */
+
+function increaseQuantity(index) {
+
+cart[index].quantity++;
+
+displayCart();
+
+}
+
+
+/* DECREASE */
+
+function decreaseQuantity(index) {
+
+if (cart[index].quantity > 1) {
+
+cart[index].quantity--;
+
+} else {
+
+cart.splice(index,1);
+
+}
+
+displayCart();
+
+}
+
+
+/* REMOVE */
+
+function removeItem(index) {
+
+cart.splice(index,1);
+
+displayCart();
+
+}
+
+
+/* SEARCH FOOD */
+
+function searchFood() {
+
+let search =
+document.getElementById("searchBox")
+.value
+.toLowerCase();
+
+
+let foods =
+document.querySelectorAll(".food");
+
+
+foods.forEach(function(food) {
+
+
+let name =
+food.querySelector("h3")
+.innerText
+.toLowerCase();
+
+
+if (name.includes(search)) {
+
+food.style.display = "block";
+
+} else {
+
+food.style.display = "none";
+
+}
+
+});
+
+}
+
+
+/* CATEGORY FILTER */
+
+function filterFood(category) {
+
+let foods =
+document.querySelectorAll(".food");
+
+
+foods.forEach(function(food) {
+
+
+let foodCategory =
+food.getAttribute("data-category");
+
+
+if (
+category === "all" ||
+foodCategory === category
+) {
+
+food.style.display = "block";
+
+} else {
+
+food.style.display = "none";
+
+}
+
+});
+
+}
+
+
+/* PLACE ORDER */
+
+function placeOrder() {
+
+
+if (cart.length === 0) {
+
+alert(
+"Please add food items to your cart first!"
+);
+
+return;
+
+}
+
+
+let name =
+document.getElementById("customerName")
+.value
+.trim();
+
+
+let phone =
+document.getElementById("customerPhone")
+.value
+.trim();
+
+
+let address =
+document.getElementById("customerAddress")
+.value
+.trim();
+
+
+if (
+name === "" ||
+phone === "" ||
+address === ""
+) {
+
+alert(
+"Please enter your name, mobile number and address."
+);
+
+return;
+
+}
+
+
+let message =
+"Hello AS EXPLORE! 🍽️%0A%0A" +
+
+"New Food Order%0A" +
+
+"--------------------%0A" +
+
+"Customer: " +
+encodeURIComponent(name) +
+"%0A" +
+
+"Phone: " +
+encodeURIComponent(phone) +
+"%0A" +
+
+"Address: " +
+encodeURIComponent(address) +
+"%0A%0A" +
+
+"Order Details:%0A";
+
+
+let total = 0;
+
+
+cart.forEach(function(item) {
+
+
+let itemTotal =
+item.price * item.quantity;
+
+
+total += itemTotal;
+
+
+message +=
+
+encodeURIComponent(item.name) +
+
+" x " +
+
+item.quantity +
+
+" = ₹" +
+
+itemTotal +
+
+"%0A";
+
+});
+
+
+message +=
+
+"%0ATotal Amount: ₹" +
+
+total +
+
+"%0A%0A" +
+
+"Thank you! 🙏";
+
+
+/*
+CHANGE THIS NUMBER
+TO YOUR WHATSAPP NUMBER
+*/
+
+let whatsappNumber =
+"917428998324";
+
+
+let whatsappURL =
+"https://wa.me/" +
+whatsappNumber +
+"?text=" +
+message;
+
+
+window.open(
+whatsappURL,
+"_blank"
+);
+
+}
+
+
+/* START CART */
+
+displayCart();
+
+</script>
+
+
+</body>
+
+</html>
